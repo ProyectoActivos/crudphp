@@ -1,5 +1,5 @@
 <?php
-require'funciones.php';
+require'funcionesTecnico.php';
 try{
         $conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
     }catch(PDOException $e){
@@ -10,41 +10,35 @@ try{
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $id = limpiarDatos($_POST['id']);
         $nombre = limpiarDatos($_POST['nombre']);
-        $descripcion = limpiarDatos($_POST['descripcion']);
-        $fcompra = limpiarDatos($_POST['fcompra']);
-        $finstalacion = limpiarDatos($_POST['finstalacion']);
-        $tvida = limpiarDatos($_POST['tvida']);
-        $garantia = limpiarDatos($_POST['garantia']);
+        $apellido = limpiarDatos($_POST['apellido']);
+        $dni = limpiarDatos($_POST['dni']);
+        $telefono = limpiarDatos($_POST['telefono']);
 
         $statement = $conexion->prepare(
-        "UPDATE ACTIVOS SET
+        "UPDATE TECNICOS SET
         NOMBRE = :nombre,
-        DESCRIPCION = :descripcion,
-        FCOMPRA = :fcompra,
-        FINSTALACION = :finstalacion,
-        TVIDA = :tvida,
-        GARANTIA = :garantia
+        APELLIDO = :apellido,
+        DNI = :dni,
+        TELEFONO = :telefono
         WHERE ID =:id");
 
         $statement ->execute(array(
             ':id'=>$id,
             ':nombre'=> $nombre,
-            ':descripcion'=> $descripcion,
-            ':fcompra'=> $fcompra,
-            ':finstalacion'=> $finstalacion,
-            ':tvida'=> $tvida,
-            ':garantia'=> $garantia
+            ':apellido'=> $apellido,
+            ':dni'=> $dni,
+            ':telefono'=> $telefono
             ));
-        header('Location: index.php');
+        header('Location: tecnicos.php');
     }else{
         $id = id_numeros($_GET['id']);
         if(empty($id)){
-            header('Location: index.php');
+            header('Location: tecnicos.php');
         }
         $contacto = obtener_id($conexion,$id);
 
         if(!$contacto){
-            header('Location: index.php');
+            header('Location: tecnicos.php');
         }
         $contacto =$contacto[0];
     }
@@ -56,7 +50,7 @@ try{
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>GESTION DE ACTIVOS</title>
+    <title>GESTION DE TECNICOS</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -111,7 +105,7 @@ try{
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="#">GESTION DE ACTIVOS</a>
+                    <a class="navbar-brand" href="tecnicos.php">GESTION DE TECNICOS</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -127,7 +121,7 @@ try{
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Actualizar Activo</h4>
+                                <h4 class="title">Actualizar Tecnico</h4>
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
                         <input type="hidden" name="id" value="<?php echo $contacto['ID'];?>" >
                                         <div class="row">
@@ -139,42 +133,28 @@ try{
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Descripcion:</label>
-                                                        <input type="text" class="form-control" required="" name="descripcion" value="<?php echo $contacto['DESCRIPCION'];?>">
+                                                        <label class="control-label">Apellido:</label>
+                                                        <input type="text" class="form-control" required="" name="apellido" value="<?php echo $contacto['APELLIDO'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha de compra:</label>
-                                                        <input type="text" class="form-control" required="" name="fcompra" value="<?php echo $contacto['FCOMPRA'];?>">
+                                                        <label class="control-label">DNI:</label>
+                                                        <input type="text" class="form-control" required="" name="dni" value="<?php echo $contacto['DNI'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha de instalación:</label>
-                                                        <input type="text" class="form-control" required="" name="finstalacion" value="<?php echo $contacto['FINSTALACION'];?>">
-                                                    <i class="material-input"></i></div>
-                                                </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Tiempo de vida:</label>
-                                                        <input type="text" class="form-control" required="" name="tvida" value="<?php echo $contacto['TVIDA'];?>">
-                                                    <i class="material-input"></i></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Garantía:</label>
-                                                        <input type="text" class="form-control" required="" name="garantia" value="<?php echo $contacto['GARANTIA'];?>">
+                                                        <label class="control-label">Teléfono:</label>
+                                                        <input type="text" class="form-control" required="" name="telefono" value="<?php echo $contacto['TELEFONO'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary">Actualizar Activo</button>
+                                                <button type="submit" class="btn btn-primary">Actualizar Tecnico</button>
                                                 </div>
                                         </div>
                                     </form>

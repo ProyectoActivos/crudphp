@@ -1,5 +1,5 @@
 <?php
-    require 'funciones.php';
+    require 'funcionesTecnico.php';
 $mensaje='';
 try{
 	$conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
@@ -23,7 +23,7 @@ if(!$consulta){
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>GESTION DE ACTIVOS</title>
+	<title>GESTION DE TECNICOS</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -112,8 +112,8 @@ if(!$consulta){
                                                 <?php echo "<td>". $Sql['APELLIDO']. "</td>"; ?>
                                                 <?php echo "<td>". $Sql['DNI']. "</td>"; ?>
                                                 <?php echo "<td>". $Sql['TELEFONO']. "</td>"; ?>
-                                                <?php echo "<td>"."<a href='update.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
-                                            <?php echo "<a href='delete.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
+                                                <?php echo "<td>"."<a href='updateTecnico.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
+                                            <?php echo "<a href='deleteTecnico.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
