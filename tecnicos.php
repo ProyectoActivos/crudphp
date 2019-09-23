@@ -58,7 +58,8 @@ if(!$consulta){
                     </a>
                     <a href="tecnicos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>TÉCNICOS</p>                    
+                        <p>TÉCNICOS</p>
+                    </a>                  
                 </li>
             </ul>
     	</div>
@@ -91,7 +92,7 @@ if(!$consulta){
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Lista de Tecnicos</h4>
-                                <a type="button" href="AgregarActivo.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
+                                <a type="button" href="AgregarTecnico.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">

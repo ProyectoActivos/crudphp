@@ -44,8 +44,6 @@ if(!$consulta){
     <div class="sidebar" data-color="blue" >
 
     	<div class="sidebar-wrapper">
-
-
             <ul class="nav">
                 <li class="active">
                     <a href="index.php">
@@ -58,7 +56,8 @@ if(!$consulta){
                     </a>
                     <a href="tecnicos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>TÉCNICOS</p>                    
+                        <p>TÉCNICOS</p> 
+                    </a>                  
                 </li>
             </ul>
     	</div>

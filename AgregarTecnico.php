@@ -2,13 +2,11 @@
 require'funciones.php';
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $nombre = limpiarDatos($_POST['nombre']);
-        $descripcion = limpiarDatos($_POST['descripcion']);
-        $fcompra = limpiarDatos($_POST['fcompra']);
-        $finstalacion = limpiarDatos($_POST['finstalacion']);
-        $tvida = limpiarDatos($_POST['tvida']);
-        $garantia = limpiarDatos($_POST['garantia']);
+        $apellido = limpiarDatos($_POST['apellido']);
+        $dni = limpiarDatos($_POST['dni']);
+        $telefono = limpiarDatos($_POST['telefono']);
     $mensaje='';
-    if(empty($nombre) or empty($descripcion)  or empty($fcompra) or empty($finstalacion) or empty($tvida) or empty($garantia)){
+    if(empty($nombre) or empty($apellido)  or empty($dni) or empty($telefono)){
         $mensaje.= 'Por favor rellena todos los datos correctamente'."<br />";
     }
     else{
@@ -21,17 +19,15 @@ require'funciones.php';
     }
     if($mensaje==''){
         $statement = $conexion->prepare(
-        'INSERT INTO ACTIVOS values(null, :nombre,:descripcion,:fcompra,:finstalacion,:tvida,:garantia)');
+        'INSERT INTO TECNICOS values(null, :nombre,:apellido,:dni,:telefono)');
 
         $statement ->execute(array(
         ':nombre'=>$nombre,
-        ':descripcion'=>$descripcion,
-        ':fcompra'=>$fcompra,
-        ':finstalacion'=>$finstalacion,
-        ':tvida'=>$tvida,
-        ':garantia'=>$garantia
+        ':apellido'=>$apellido,
+        ':dni'=>$dni,
+        ':telefono'=>$telefono,
         ));
-        header('Location: index.php');
+        header('Location: tecnicos.php');
     }
 }
 ?>
@@ -42,7 +38,7 @@ require'funciones.php';
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>GESTIÓN DE ACTIVOS</title>
+    <title>GESTIÓN DE TECNICOS</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -58,6 +54,7 @@ require'funciones.php';
 <div class="wrapper">
     <div class="sidebar" data-color="blue" >
     <div class="sidebar-wrapper">
+
         <ul class="nav">
             <li class="active">
                 <a href="index.php">
@@ -71,7 +68,7 @@ require'funciones.php';
                 <a href="tecnicos.php">
                     <i class="pe-7s-note2"></i>
                     <p>TÉCNICOS</p> 
-                </a>                   
+                </a>                    
             </li>
         </ul>
     </div>
@@ -87,7 +84,7 @@ require'funciones.php';
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="index.php">GESTION DE ACTIVOS</a>
+                    <a class="navbar-brand" href="tecnicos.php">GESTION DE TECNICOS</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -103,7 +100,7 @@ require'funciones.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Agregar Activo</h4>
+                                <h4 class="title">Agregar Tecnicos</h4>
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -114,42 +111,28 @@ require'funciones.php';
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Descripcion:</label>
-                                                        <input type="text" class="form-control" required="" name="descripcion">
+                                                        <label class="control-label">Apellido:</label>
+                                                        <input type="text" class="form-control" required="" name="apellido">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha de compra:</label>
-                                                        <input type="date" class="form-control" required="" name="fcompra">
+                                                        <label class="control-label">DNI:</label>
+                                                        <input type="text" class="form-control" required="" name="dni">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha de instalación:</label>
-                                                        <input type="date" class="form-control" required="" name="finstalacion">
-                                                    <i class="material-input"></i></div>
-                                                </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Tiempo de vida:</label>
-                                                        <input type="text" class="form-control" required="" name="tvida">
-                                                    <i class="material-input"></i></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Garantía:</label>
-                                                        <input type="text" class="form-control" required="" name="garantia">
+                                                        <label class="control-label">Teléfono:</label>
+                                                        <input type="text" class="form-control" required="" name="telefono">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary">Agregar Activo</button>
+                                                <button type="submit" class="btn btn-primary">Agregar Tecnico</button>
                                             </div>
                                         </div>
                                     </form>
