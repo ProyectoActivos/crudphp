@@ -148,7 +148,7 @@ require'funciones.php';
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Garantía:</label>
-                                                        <select class="form-control" name="tvida">
+                                                        <select class="form-control" name="garantia">
                                                             <option value="1 años">1 años</option>
                                                             <option value="2 años">2 años</option>
                                                             <option value="3 años">3 años</option>
