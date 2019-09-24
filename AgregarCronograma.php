@@ -90,7 +90,7 @@ require'funciones.php';
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="tecnicos.php">GESTION DE TECNICOS</a>
+                    <a class="navbar-brand" href="tecnicos.php">GESTION DE CRONOGRAMA</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
