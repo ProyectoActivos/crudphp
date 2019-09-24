@@ -106,7 +106,7 @@ require'funciones.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Agregar Tecnicos</h4>
+                                <h4 class="title">Agregar Cronogramas</h4>
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
