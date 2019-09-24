@@ -33,7 +33,7 @@ require'funciones.php';
         ':observacion'=>$observacion,
         ':fallas'=>$fallas
         ));
-        header('Location: cronogramas.php');
+        header('Location: cronograma.php');
     }
 }
 ?>
