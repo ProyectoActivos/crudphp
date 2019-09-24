@@ -48,7 +48,7 @@ if(!$consulta){
 
             <ul class="nav">
                 <li class="active">
-                    <a href="index.php">
+                    <a href="index2.php">
                         <i class="pe-7s-note3"></i>
                         <p>INICIO</p>
                     </a>

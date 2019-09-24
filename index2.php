@@ -1,5 +1,5 @@
 <?php
-    require 'funcionesCronograma.php';
+    require 'funciones.php';
 $mensaje='';
 try{
 	$conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
@@ -8,12 +8,12 @@ try{
 }
 
 $consulta = $conexion -> prepare("
-	SELECT * FROM CRONOGRAMAS");
+	SELECT * FROM Activos");
 
 $consulta ->execute();
 $consulta = $consulta ->fetchAll();
 if(!$consulta){
-	$mensaje .= 'NO HAY CRONOGRAMAS PARA MOSTRAR';
+	$mensaje .= 'NO HAY ACTIVOS PARA MOSTRAR';
 }
 ?>
 <!doctype html>
@@ -23,7 +23,7 @@ if(!$consulta){
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>GESTION DE CRONOGRAMA</title>
+	<title>GESTION DE ACTIVOS</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -44,8 +44,6 @@ if(!$consulta){
     <div class="sidebar" data-color="blue" >
 
     	<div class="sidebar-wrapper">
-
-
             <ul class="nav">
                 <li class="active">
                     <a href="index2.php">
@@ -58,7 +56,8 @@ if(!$consulta){
                     </a>
                     <a href="tecnicos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>TÉCNICOS</p>                    
+                        <p>TÉCNICOS</p> 
+                    </a>                  
                 </li>
             </ul>
     	</div>
@@ -74,7 +73,7 @@ if(!$consulta){
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="#">CRONOGRAMAS GENERADOS</a>
+                    <a class="navbar-brand" href="#">GESTION DE ACTIVOS</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -90,35 +89,33 @@ if(!$consulta){
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Lista de Cronogramas</h4>
-                                <a type="button" href="AgregarCronograma.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
+                                <h4 class="title">Lista de Activos</h4>
+                                <a type="button" href="AgregarActivo.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>#</th>
-                                    	<th>ID Maquina</th>
-                                    	<th>ID Tecnico</th>
-                                    	<th>Tiempo de Mantenimiento</th>
-                                        <th>Fecha de inicio</th>
-                                        <th>Fecha fin</th>
-                                        <th>Observación</th>
-                                        <th>Fallas</th>
+                                    	<th>Nombre</th>
+                                    	<th>Descripcion</th>
+                                    	<th>Fecha de compra</th>
+                                        <th>Fecha de instalación</th>
+                                        <th>Tiempo de vida</th>
+                                        <th>Garantía</th>
                                         <th><i class="fa fa-wrench" aria-hidden="true"></i>Opciones</th>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($consulta as $Sql): ?>
                                            <tr>
                                                 <?php echo "<td>". $Sql['ID']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['IDMAQUINA']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['IDTECNICO']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['TMANTENIMIENTO']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['FINICIO']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['FFIN']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['OBSERVACION']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['FALLAS']. "</td>"; ?>
-                                                <?php echo "<td>"."<a href='updateCronograma.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
-                                            <?php echo "<a href='deleteCronograma.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
+                                                <?php echo "<td>". $Sql['NOMBRE']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['DESCRIPCION']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['FCOMPRA']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['FINSTALACION']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['TVIDA']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['GARANTIA']. "</td>"; ?>
+                                                <?php echo "<td>"."<a href='update.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
+                                            <?php echo "<a href='delete.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -142,7 +139,7 @@ if(!$consulta){
                     <ul>
                         <li>
                             <a href="#">
-                                CRONOGRAMA
+                                ACTIVOS
                             </a>
                         </li>
                     </ul>
