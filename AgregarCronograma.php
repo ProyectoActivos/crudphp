@@ -1,12 +1,15 @@
 <?php
 require'funciones.php';
     if($_SERVER['REQUEST_METHOD']=='POST'){
-        $nombre = limpiarDatos($_POST['nombre']);
-        $apellido = limpiarDatos($_POST['apellido']);
-        $dni = limpiarDatos($_POST['dni']);
-        $telefono = limpiarDatos($_POST['telefono']);
+        $idmaquina = limpiarDatos($_POST['idmaquina']);
+        $idtecnico = limpiarDatos($_POST['idtecnico']);
+        $tmantenimiento = limpiarDatos($_POST['tmantenimiento']);
+        $finicio = limpiarDatos($_POST['finicio']);
+        $ffin = limpiarDatos($_POST['ffin']);
+        $observacion = limpiarDatos($_POST['observacion']);
+        $fallas = limpiarDatos($_POST['fallas']);
     $mensaje='';
-    if(empty($nombre) or empty($apellido)  or empty($dni) or empty($telefono)){
+    if(empty($idmaquina) or empty($idtecnico)  or empty($mantenimiento) or empty($inicio) or empty($fin) or empty($observacion) or empty($fallas)){
         $mensaje.= 'Por favor rellena todos los datos correctamente'."<br />";
     }
     else{
@@ -19,15 +22,18 @@ require'funciones.php';
     }
     if($mensaje==''){
         $statement = $conexion->prepare(
-        'INSERT INTO TECNICOS values(null, :nombre,:apellido,:dni,:telefono)');
+        'INSERT INTO CRONOGRAMAS values(null, :idmaquina,:idtecnico,:tmatenimiento,:finicio,:ffin,:observacion,:fallas)');
 
         $statement ->execute(array(
-        ':nombre'=>$nombre,
-        ':apellido'=>$apellido,
-        ':dni'=>$dni,
-        ':telefono'=>$telefono
+        ':idmaquina'=>$idmaquina,
+        ':idtecnico'=>$idtecnico,
+        ':tmantenimiento'=>$tmantenimiento,
+        ':finicio'=>$finicio,
+        ':ffin'=>$ffin,
+        ':observacion'=>$observacion,
+        ':fallas'=>$fallas
         ));
-        header('Location: tecnicos.php');
+        header('Location: cronogramas.php');
     }
 }
 ?>
