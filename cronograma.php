@@ -142,7 +142,7 @@ if(!$consulta){
                     <ul>
                         <li>
                             <a href="#">
-                                CRONOGRAMA
+                                CRONOGRAMAS
                             </a>
                         </li>
                     </ul>

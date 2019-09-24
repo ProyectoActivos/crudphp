@@ -66,6 +66,7 @@ try{
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/combostyle.css" rel="stylesheet" />        
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
@@ -88,7 +89,7 @@ try{
         <ul class="nav">
             <li class="active">
                 <a href="index.php">
-                    <i class="pe-7s-note2"></i>
+                    <i class="pe-7s-note3"></i>
                     <p>INICIO</p>
                 </a>
                 <a href="cronograma.php">
@@ -150,8 +151,12 @@ try{
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Tiempo de Mantenimiento:</label>
-                                                        <input type="text" class="form-control" required="" name="tmantenimiento" value="<?php echo $contacto['TMANTENIMIENTO'];?>">
+                                                        <label class="control-label">Tipo de Mantenimiento:</label>
+                                                        <select class="form-control" name="tmantenimiento">
+                                                            <option value="Preventivo">Preventivo</option>
+                                                            <option value="Predictivo">Predictivo</option>
+                                                            <option value="Correctivo">Correctivo</option>
+                                                        </select>                                                        
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">

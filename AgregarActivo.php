@@ -61,7 +61,7 @@ require'funciones.php';
         <ul class="nav">
             <li class="active">
                 <a href="index.php">
-                    <i class="pe-7s-note2"></i>
+                    <i class="pe-7s-note3"></i>
                     <p>INICIO</p>
                 </a>
                 <a href="cronograma.php">
@@ -137,13 +137,23 @@ require'funciones.php';
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Tiempo de vida:</label>
-                                                        <input type="text" class="form-control" required="" name="tvida">
+                                                        <select class="form-control" name="tvida">
+                                                            <option value="2 años">2 años</option>
+                                                            <option value="4 años">4 años</option>
+                                                            <option value="6 años">6 años</option>
+                                                            <option value="8 años">8 años</option>
+                                                        </select>                                                          
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Garantía:</label>
-                                                        <input type="text" class="form-control" required="" name="garantia">
+                                                        <select class="form-control" name="tvida">
+                                                            <option value="1 años">1 años</option>
+                                                            <option value="2 años">2 años</option>
+                                                            <option value="3 años">3 años</option>
+                                                            <option value="4 años">4 años</option>
+                                                        </select>                                                         
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
