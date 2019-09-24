@@ -54,7 +54,7 @@ if(!$consulta){
                     </a>
                     <a href="cronograma.php">
                         <i class="pe-7s-note2"></i>
-                        <p>CRONOGRAMA</p>
+                        <p>CRONOGRAMAS</p>
                     </a>
                     <a href="tecnicos.php">
                         <i class="pe-7s-note2"></i>
