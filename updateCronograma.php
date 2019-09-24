@@ -1,6 +1,14 @@
 <?php
 require'funcionesCronograma.php';
+try{
+        $conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
+    }catch(PDOException $e){
+        echo "ERROR: " . $e->getMessge();
+        die();
+    }
+
     if($_SERVER['REQUEST_METHOD']=='POST'){
+        $id = limpiarDatos($_POST['id']);
         $idmaquina = limpiarDatos($_POST['idmaquina']);
         $idtecnico = limpiarDatos($_POST['idtecnico']);
         $tmantenimiento = limpiarDatos($_POST['tmantenimiento']);
@@ -8,34 +16,41 @@ require'funcionesCronograma.php';
         $ffin = limpiarDatos($_POST['ffin']);
         $observacion = limpiarDatos($_POST['observacion']);
         $fallas = limpiarDatos($_POST['fallas']);
-    $mensaje='';
-    if(empty($idmaquina) or empty($idtecnico)  or empty($tmantenimiento) or empty($finicio) or empty($ffin) or empty($observacion) or empty($fallas)){
-        $mensaje.= 'Por favor rellena todos los datos correctamente'."<br />";
-    }
-    else{
-        try{
-            $conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
-        }catch(PDOException $e){
-            echo "Error: ". $e->getMessage();
-            die();
-        }
-    }
-    if($mensaje==''){
+
         $statement = $conexion->prepare(
-        'INSERT INTO CRONOGRAMAS values(null, :idmaquina, :idtecnico, :tmantenimiento, :finicio, :ffin, :observacion, :fallas)');
+        "UPDATE CRONOGRAMAS SET
+        IDMAQUINA = :idmaquina,
+        IDTECNICO = :idtecnico,
+        TMANTENIMIENTO = :tmantenimiento,
+        FINICIO = :finicio,
+        FFIN = :ffin,
+        OBSERVACION = :observacion,
+        FALLAS = :fallas
+        WHERE ID =:id");
 
         $statement ->execute(array(
-        ':idmaquina'=>$idmaquina,
-        ':idtecnico'=>$idtecnico,
-        ':tmantenimiento'=>$tmantenimiento,
-        ':finicio'=>$finicio,
-        ':ffin'=>$ffin,
-        ':observacion'=>$observacion,
-        ':fallas'=>$fallas
-        ));
+            ':id'=>$id,
+            ':idmaquina'=> $idmaquina,
+            ':idtecnico'=> $idtecnico,
+            ':tmantenimiento'=> $tmantenimiento,
+            ':finicio'=> $finicio,
+            ':ffin'=> $ffin,
+            ':observacion'=> $observacion,
+            ':fallas'=> $fallas
+            ));
         header('Location: cronograma.php');
+    }else{
+        $id = id_numeros($_GET['id']);
+        if(empty($id)){
+            header('Location: cronograma.php');
+        }
+        $contacto = obtener_id($conexion,$id);
+
+        if(!$contacto){
+            header('Location: cronograma.php');
+        }
+        $contacto =$contacto[0];
     }
-}
 ?>
 <!doctype html>
 <html lang="es">
@@ -44,14 +59,20 @@ require'funcionesCronograma.php';
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>GESTIÓN DE CRONOGRAMA</title>
+    <title>GESTION DE CRONOGRAMA</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
@@ -59,8 +80,11 @@ require'funcionesCronograma.php';
 
 <div class="wrapper">
     <div class="sidebar" data-color="blue" >
-    <div class="sidebar-wrapper">
 
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="active">
                 <a href="index.php">
@@ -94,31 +118,32 @@ require'funcionesCronograma.php';
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="separator hidden-lg hidden-md"></li>
+                       <li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="content">
+                <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Agregar Cronogramas</h4>
+                                <h4 class="title">Actualizar CRONOGRAMA</h4>
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+                        <input type="hidden" name="id" value="<?php echo $contacto['ID'];?>" >
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">ID Máquina:</label>
-                                                        <input type="number" class="form-control" required="" name="idmaquina">
+                                                        <input type="number" class="form-control" required="" name="idmaquina" value="<?php echo $contacto['IDMAQUINA'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">ID Técnico:</label>
-                                                        <input type="number" class="form-control" required="" name="idtecnico">
+                                                        <input type="number" class="form-control" required="" name="idtecnico" value="<?php echo $contacto['IDTECNICO'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
@@ -126,13 +151,13 @@ require'funcionesCronograma.php';
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Tiempo de Mantenimiento:</label>
-                                                        <input type="text" class="form-control" required="" name="tmantenimiento">
+                                                        <input type="text" class="form-control" required="" name="tmantenimiento" value="<?php echo $contacto['TMANTENIMIENTO'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Fecha de Inicio:</label>
-                                                        <input type="date" class="form-control" required="" name="finicio">
+                                                        <input type="date" class="form-control" required="" name="finicio" value="<?php echo $contacto['FINICIO'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
@@ -140,27 +165,27 @@ require'funcionesCronograma.php';
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Fecha Fin:</label>
-                                                        <input type="date" class="form-control" required="" name="ffin">
+                                                        <input type="date" class="form-control" required="" name="ffin" value="<?php echo $contacto['FFIN'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Observación:</label>
-                                                        <input type="text" class="form-control" required="" name="observacion">
+                                                        <input type="text" class="form-control" required="" name="observacion" value="<?php echo $contacto['OBSERVACION'];?>">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
                                         <div class="col-md-12">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Fallas:</label>
-                                                        <input type="text" class="form-control" required="" name="fallas">
+                                                        <input type="text" class="form-control" required="" name="fallas" value="<?php echo $contacto['FALLAS'];?>">
                                                     <i class="material-input"></i></div>
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary">Agregar cronograma</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-primary">Actualizar Cronograma</button>
+                                                </div>
                                         </div>
                                     </form>
                                     <?php  if(!empty($mensaje)): ?>
@@ -169,7 +194,6 @@ require'funcionesCronograma.php';
                                     </div>
                                 <?php  endif; ?>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -182,8 +206,8 @@ require'funcionesCronograma.php';
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
-                                NUEVO
+                            <a href="index.php">
+                                Cronograma
                             </a>
                         </li>
                     </ul>
@@ -196,12 +220,23 @@ require'funcionesCronograma.php';
 </div>
 </body>
 
+    <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
     <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+    <!--  Charts Plugin -->
     <script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="assets/js/demo.js"></script>
 
 
