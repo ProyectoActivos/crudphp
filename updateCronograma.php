@@ -81,10 +81,9 @@ try{
                     GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
                 </a>
             </div>
-
             <ul class="nav">
                 <li class="active">
-                    <a href="index.php">
+                    <a href="activos.php">
                         <i class="pe-7s-home"></i>
                         <p>INICIO</p>
                     </a>
@@ -102,7 +101,13 @@ try{
                         <i class="pe-7s-users"></i>
                         <p>TÉCNICOS</p>
                     </a>
-                </li>
+            <ul class="nav"  style="margin-top: 431px">
+                <li class="active" >
+                    <a href="index.php">
+                        <i class="pe-7s-back-2"></i>
+                        <p>CERRAR SESIÓN</p>
+                    </a>
+                </li>                    
             </ul>
         </div>
     </div>

@@ -31,7 +31,7 @@ require'funciones.php';
         ':tvida'=>$tvida,
         ':garantia'=>$garantia
         ));
-        header('Location: index.php');
+        header('Location: activos.php');
     }
 }
 ?>
@@ -63,10 +63,9 @@ require'funciones.php';
                     GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
                 </a>
             </div>
-
             <ul class="nav">
                 <li class="active">
-                    <a href="index.php">
+                    <a href="activos.php">
                         <i class="pe-7s-home"></i>
                         <p>INICIO</p>
                     </a>
@@ -84,7 +83,13 @@ require'funciones.php';
                         <i class="pe-7s-users"></i>
                         <p>TÉCNICOS</p>
                     </a>
-                </li>
+            <ul class="nav"  style="margin-top: 431px">
+                <li class="active" >
+                    <a href="index.php">
+                        <i class="pe-7s-back-2"></i>
+                        <p>CERRAR SESIÓN</p>
+                    </a>
+                </li>                    
             </ul>
         </div>
     </div>
@@ -99,7 +104,7 @@ require'funciones.php';
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="index.php">GESTIÓN DE ACTIVOS</a>
+                    <a class="navbar-brand" href="activos.php">GESTIÓN DE ACTIVOS</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

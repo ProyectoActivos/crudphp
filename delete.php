@@ -10,7 +10,7 @@
 	$resultado = $conexion->query($sql);
 
 	if($resultado == true){
-		header('Location: index.php');
+		header('Location: activos.php');
 		$errores .='Activo eliminado correctamente';
 	}
 ?>
