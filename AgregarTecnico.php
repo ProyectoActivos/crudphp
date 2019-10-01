@@ -52,26 +52,37 @@ require'funciones.php';
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" >
-    <div class="sidebar-wrapper">
+<div class="sidebar" data-color="blue" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
+                    GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
+                </a>
+            </div>
 
-        <ul class="nav">
-            <li class="active">
-                <a href="index.php">
-                    <i class="pe-7s-note3"></i>
-                    <p>INICIO</p>
-                </a>
-                <a href="cronograma.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>CRONOGRAMAS</p>
-                </a>
-                <a href="tecnicos.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>TÉCNICOS</p> 
-                </a>                    
-            </li>
-        </ul>
-    </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="index.php">
+                        <i class="pe-7s-home"></i>
+                        <p>INICIO</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="cronograma.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>CRONOGRAMAS</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="tecnicos.php">
+                        <i class="pe-7s-users"></i>
+                        <p>TÉCNICOS</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-panel">

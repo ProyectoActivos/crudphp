@@ -55,30 +55,42 @@ require'funcionesCronograma.php';
     <link href="assets/css/demo.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script type="text/javascript" src="assets/js/demo.js"></script>
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" >
-    <div class="sidebar-wrapper">
+<div class="sidebar" data-color="blue" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
+                    GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
+                </a>
+            </div>
 
-        <ul class="nav">
-            <li class="active">
-                <a href="index.php">
-                    <i class="pe-7s-note3"></i>
-                    <p>INICIO</p>
-                </a>
-                <a href="cronograma.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>CRONOGRAMAS</p>
-                </a>
-                <a href="tecnicos.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>TÉCNICOS</p> 
-                </a>                    
-            </li>
-        </ul>
-    </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="index.php">
+                        <i class="pe-7s-home"></i>
+                        <p>INICIO</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="cronograma.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>CRONOGRAMAS</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="tecnicos.php">
+                        <i class="pe-7s-users"></i>
+                        <p>TÉCNICOS</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -108,12 +120,13 @@ require'funcionesCronograma.php';
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Agregar Cronogramas</h4>
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+                                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">ID Máquina:</label>
-                                                        <input type="number" class="form-control" required="" name="idmaquina">
+                                                        <input type="numbrer" class="form-control" required="" name="idmaquina">
+                                                        <input type="button" name="bm" class="btn btn-primary col-md-12" value="Buscar Maquinarias" onclick="location.href='BuscarActivo.php'">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -125,7 +138,7 @@ require'funcionesCronograma.php';
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty">
+                                            <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Tipo de Mantenimiento:</label>
                                                         <select class="form-control" name="tmantenimiento">
                                                             <option value="Preventivo">Preventivo</option>
@@ -135,8 +148,8 @@ require'funcionesCronograma.php';
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha de Inicio:</label>
+                                                <div class="form-group label-floating is-empty">
+                                                        <label class="control-label">Fecha de inicio:</label>
                                                         <input type="date" class="form-control" required="" name="finicio">
                                                     <i class="material-input"></i></div>
                                                 </div>
@@ -144,27 +157,28 @@ require'funcionesCronograma.php';
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Fecha Fin:</label>
+                                                        <label class="control-label">Fecha de finalización:</label>
                                                         <input type="date" class="form-control" required="" name="ffin">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Observación:</label>
+                                                        <label class="control-label">Observaciones:</label>
                                                         <input type="text" class="form-control" required="" name="observacion">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Fallas:</label>
-                                                        <input type="text" class="form-control" required="" name="fallas">
+                                                        <textarea class="form-control" rows="5" name="fallas"></textarea>
                                                     <i class="material-input"></i></div>
-                                            </div>
-                                        </div>
+                                                </div>
+                                        </div>                                        
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary">Agregar cronograma</button>
+                                                <button type="submit" class="btn btn-primary">Agregar Cronograma</button>
                                             </div>
                                         </div>
                                     </form>

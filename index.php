@@ -23,7 +23,7 @@ if(!$consulta){
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>GESTION DE ACTIVOS</title>
+	<title>GESTIÓN DE ACTIVOS</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -42,25 +42,36 @@ if(!$consulta){
 
 <div class="wrapper">
     <div class="sidebar" data-color="blue" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
+                    GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
+                </a>
+            </div>
 
-    	<div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="active">
                     <a href="index.php">
-                        <i class="pe-7s-note3"></i>
+                        <i class="pe-7s-home"></i>
                         <p>INICIO</p>
                     </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
                     <a href="cronograma.php">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-news-paper"></i>
                         <p>CRONOGRAMAS</p>
                     </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
                     <a href="tecnicos.php">
-                        <i class="pe-7s-note2"></i>
-                        <p>TÉCNICOS</p> 
-                    </a>                  
+                        <i class="pe-7s-users"></i>
+                        <p>TÉCNICOS</p>
+                    </a>
                 </li>
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -92,6 +103,10 @@ if(!$consulta){
                                 <h4 class="title">Lista de Activos</h4>
                                 <a type="button" href="AgregarActivo.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
+                            <form action="BuscarActivo.php" method="GET" class="form_search">
+                                <input type="text" class="form-control" required="" name="busqueda" id="busqueda" placeholder="Ingrese activo" value="">
+                                <input type="submit" value="Buscar" class="btn btn-primary">
+                            </form>                            
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
@@ -115,7 +130,7 @@ if(!$consulta){
                                                 <?php echo "<td>". $Sql['TVIDA']. "</td>"; ?>
                                                 <?php echo "<td>". $Sql['GARANTIA']. "</td>"; ?>
                                                 <?php echo "<td>"."<a href='update.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
-                                            <?php echo "<a href='delete.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
+                                                <?php echo "<a href='delete.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

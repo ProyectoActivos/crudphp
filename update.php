@@ -60,45 +60,47 @@ try{
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
-    <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
-    <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
-    <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" >
-
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-
-
-    <div class="sidebar-wrapper">
-        <ul class="nav">
-            <li class="active">
-                <a href="index.php">
-                    <i class="pe-7s-note3"></i>
-                    <p>INICIO</p>
+<div class="sidebar" data-color="blue" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
+                    GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
                 </a>
-                <a href="cronograma.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>CRONOGRAMAS</p>
-                </a>
-                <a href="tecnicos.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>TÉCNICOS</p> 
-                </a>                    
-            </li>
-        </ul>
-    </div>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="index.php">
+                        <i class="pe-7s-home"></i>
+                        <p>INICIO</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="cronograma.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>CRONOGRAMAS</p>
+                    </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
+                    <a href="tecnicos.php">
+                        <i class="pe-7s-users"></i>
+                        <p>TÉCNICOS</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -206,8 +208,8 @@ try{
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="index.php">
-                                Gestion
+                            <a href="#">
+                                EDITAR
                             </a>
                         </li>
                     </ul>
@@ -220,23 +222,13 @@ try{
 </div>
 </body>
 
-    <!--   Core JS Files   -->
+    
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <!--  Checkbox, Radio & Switch Plugins -->
     <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
-
-    <!--  Charts Plugin -->
     <script src="assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="assets/js/light-bootstrap-dashboard.js"></script>
-
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="assets/js/demo.js"></script>
 
 

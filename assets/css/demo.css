@@ -59,3 +59,15 @@
 .table-upgrade td:nth-child(3){
     text-align: center;
 }
+
+.form_search{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    float: right;
+    background: initial;
+    padding: 10px;
+    border-radius: 10px;
+}

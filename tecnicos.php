@@ -41,28 +41,37 @@ if(!$consulta){
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" >
-
-    	<div class="sidebar-wrapper">
-
+<div class="sidebar" data-color="blue" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
+                    GESTIÓN DEL MANTENIMIENTO DE LOS ACTIVOS
+                </a>
+            </div>
 
             <ul class="nav">
                 <li class="active">
                     <a href="index.php">
-                        <i class="pe-7s-note3"></i>
+                        <i class="pe-7s-home"></i>
                         <p>INICIO</p>
                     </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
                     <a href="cronograma.php">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-news-paper"></i>
                         <p>CRONOGRAMAS</p>
                     </a>
+                </li>
+            <ul class="nav">
+                <li class="active">
                     <a href="tecnicos.php">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-users"></i>
                         <p>TÉCNICOS</p>
-                    </a>                  
+                    </a>
                 </li>
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -91,7 +100,7 @@ if(!$consulta){
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Lista de Tecnicos</h4>
+                                <h4 class="title">Lista de Técnicos</h4>
                                 <a type="button" href="AgregarTecnico.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -137,7 +146,7 @@ if(!$consulta){
                     <ul>
                         <li>
                             <a href="#">
-                                TECNICOS
+                                TÉCNICOS
                             </a>
                         </li>
                     </ul>
