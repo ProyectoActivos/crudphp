@@ -1,5 +1,5 @@
 <?php
-    require 'funciones.php';
+    require 'funcionesTecnico.php';
 $mensaje='';
 try{
 	$conexion = new PDO('mysql:host=localhost;dbname=GestionActivos','root','');
@@ -9,18 +9,17 @@ try{
 
 $busqueda = strtolower($_REQUEST['busqueda']);
 if (empty($busqueda)){
-    header("location: index.php");
+    header("location: tecnicos.php");
 }
 
 $consulta = $conexion -> prepare("
-	SELECT * FROM Activos WHERE NOMBRE LIKE '%$busqueda%'");
+    SELECT * FROM Tecnicos WHERE NOMBRE LIKE '%$busqueda%'");
 
 $consulta ->execute();
 $consulta = $consulta ->fetchAll();
 if(!$consulta){
-	$mensaje .= 'NO HAY ACTIVOS PARA MOSTRAR';
+	$mensaje .= 'NO HAY TECNICOS PARA MOSTRAR';
 }
-
 ?>
 <!doctype html>
 <html lang="es">
@@ -29,7 +28,7 @@ if(!$consulta){
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>GESTIÓN DE ACTIVOS</title>
+	<title>GESTION DE TECNICOS</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -47,7 +46,7 @@ if(!$consulta){
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" >
+<div class="sidebar" data-color="blue" >
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="https://es.wikipedia.org/wiki/Gestión_de_activos" class="simple-text">
@@ -90,7 +89,7 @@ if(!$consulta){
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </button>
-                    <a class="navbar-brand" href="#">GESTION DE ACTIVOS</a>
+                    <a class="navbar-brand" href="#">GESTION DE TÉCNICOS</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -106,23 +105,21 @@ if(!$consulta){
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Lista de Activos</h4>
-                                <a type="button" href="AgregarActivo.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
+                                <h4 class="title">Lista de Técnicos</h4>
+                                <a type="button" href="AgregarTecnico.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
-                            <form action="BuscarActivo.php" method="GET" class="form_search">
+                            <form action="BuscarTecnico.php" method="GET" class="form_search">
                                 <input type="text" class="form-control" required="" name="busqueda" id="busqueda" placeholder="Ingrese activo" value="<?php echo $busqueda; ?>">
                                 <input type="submit" value="Buscar" class="btn btn-primary">
-                            </form>
+                            </form>                            
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>#</th>
                                     	<th>Nombre</th>
-                                    	<th>Descripcion</th>
-                                    	<th>Fecha de compra</th>
-                                        <th>Fecha de instalación</th>
-                                        <th>Tiempo de vida</th>
-                                        <th>Garantía</th>
+                                    	<th>Apellido</th>
+                                    	<th>DNI</th>
+                                        <th>TELEFONO</th>
                                         <th><i class="fa fa-wrench" aria-hidden="true"></i>Opciones</th>
                                     </thead>
                                     <tbody>
@@ -130,13 +127,11 @@ if(!$consulta){
                                            <tr>
                                                 <?php echo "<td>". $Sql['ID']. "</td>"; ?>
                                                 <?php echo "<td>". $Sql['NOMBRE']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['DESCRIPCION']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['FCOMPRA']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['FINSTALACION']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['TVIDA']. "</td>"; ?>
-                                                <?php echo "<td>". $Sql['GARANTIA']. "</td>"; ?>
-                                                <?php echo "<td>"."<a href='update.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
-                                                <?php echo "<a href='delete.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
+                                                <?php echo "<td>". $Sql['APELLIDO']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['DNI']. "</td>"; ?>
+                                                <?php echo "<td>". $Sql['TELEFONO']. "</td>"; ?>
+                                                <?php echo "<td>"."<a href='updateTecnico.php?id=".$Sql['ID']."' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>"; ?>
+                                            <?php echo "<a href='deleteTecnico.php?id=".$Sql['ID']."' class='btn btn-danger btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>". "</td>"; ?>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -160,7 +155,7 @@ if(!$consulta){
                     <ul>
                         <li>
                             <a href="#">
-                                ACTIVOS
+                                TÉCNICOS
                             </a>
                         </li>
                     </ul>

@@ -133,6 +133,7 @@ require'funcionesCronograma.php';
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">ID Técnico:</label>
                                                         <input type="number" class="form-control" required="" name="idtecnico">
+                                                        <input type="button" name="bm" class="btn btn-primary col-md-12" value="Buscar Técnicos" onclick="location.href='BuscarTecnico.php'">
                                                     <i class="material-input"></i></div>
                                                 </div>
                                         </div>

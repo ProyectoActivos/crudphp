@@ -103,6 +103,10 @@ if(!$consulta){
                                 <h4 class="title">Lista de Técnicos</h4>
                                 <a type="button" href="AgregarTecnico.php" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
                             </div>
+                            <form action="BuscarTecnico.php" method="GET" class="form_search">
+                                <input type="text" class="form-control" required="" name="busqueda" id="busqueda" placeholder="Ingrese activo" value="">
+                                <input type="submit" value="Buscar" class="btn btn-primary">
+                            </form>                              
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
