@@ -203,7 +203,7 @@ require'funcionesCronograma.php';
                     <ul>
                         <li>
                             <a href="#">
-                                NUEVO
+                                NUEVO CRONOGRAMA
                             </a>
                         </li>
                     </ul>

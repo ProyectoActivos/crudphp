@@ -195,7 +195,7 @@ require'funciones.php';
                     <ul>
                         <li>
                             <a href="#">
-                                NUEVO
+                                NUEVO ACTIVO
                             </a>
                         </li>
                     </ul>

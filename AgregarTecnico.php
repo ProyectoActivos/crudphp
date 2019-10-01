@@ -167,7 +167,7 @@ require'funciones.php';
                     <ul>
                         <li>
                             <a href="#">
-                                NUEVO
+                                NUEVO TÉCNICO
                             </a>
                         </li>
                     </ul>
